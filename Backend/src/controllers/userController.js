@@ -1,11 +1,12 @@
-
 export const authMe = async (req, res) => {
-    try{
-        const User = res.user; //
-        return res.status(401).json({User});
+  try {
+    const user = req.user; // lấy từ authMiddleware
 
-    } catch{
-        console.error("Lỗi khi gọi AuthMe", error);
-        res.status(500).json({ message: "Lỗi hệ thống!" });
-    }
+    return res.status(200).json({
+      user,
+    });
+  } catch (error) {
+    console.error("Lỗi khi gọi authMe", error);
+    return res.status(500).json({ message: "Lỗi hệ thống" });
+  }
 };

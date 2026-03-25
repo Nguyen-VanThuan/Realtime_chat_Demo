@@ -1,29 +1,29 @@
 import mongoose from "mongoose";
 
-const sessionSchema = new mongoose.Schema({
+const sessionSchema = new mongoose.Schema(
+  {
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-        index: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
     },
-
     refreshToken: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
-
     expiresAt: {
-        type: Date,
-        required: true
-    }
-
-}, { timestamps: true }
+      type: Date,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
-//Tu dong xoa session khi het han
+// tự động xoá khi hết hạn
 sessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
-const Session = mongoose.model("Session", sessionSchema);
-export default Session;
+export default mongoose.model("Session", sessionSchema);

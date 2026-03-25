@@ -1,5 +1,0 @@
-
-</xai:function_call >
-
-<xai:function_call name="edit_file">
-<parameter name="path">Backend/src/controllers/chatController.js

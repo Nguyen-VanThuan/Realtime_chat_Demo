@@ -1,13 +1,19 @@
 import express from "express";
-import { signup ,signin, signout} from "../controllers/authController.js";
-import { sign } from "crypto";
+import {
+  refreshToken,
+  signIn,
+  signOut,
+  signUp,
+} from "../controllers/authController.js";
 
 const router = express.Router();
 
-router.post("/signup", signup);
+router.post("/signup", signUp);
 
-router.post("/signin", signin);
+router.post("/signin", signIn);
 
-router.post("/signout", signout);
+router.post("/signout", signOut);
+
+router.post("/refresh", refreshToken);
 
 export default router;
